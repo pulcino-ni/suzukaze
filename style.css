@@ -72,7 +72,7 @@ body::before {
   opacity: 0; /* 初期状態で非表示 */
   visibility: hidden; /* 非表示設定 */
   animation: fade-in 1s ease forwards;
-  animation-delay: 3s; /* ローダーの終了タイミングに合わせる */
+  animation-delay: 4s; /* ローダーの終了タイミングに合わせる */
 }
 
 /* 四角形のフェードインアニメーション */
@@ -96,7 +96,7 @@ body::after {
   visibility: hidden; /* 非表示設定 */
   transform: translate(-50%, -50%); /* 中央に移動 */
   animation: fade-in 1s ease forwards;
-  animation-delay: 3s; /* 背景と同期 */
+  animation-delay: 4s; /* 背景と同期 */
 }
 
 /* 決め台詞 */
