@@ -1,0 +1,404 @@
+body{
+  overflow: hidden; /* 要素内のスクロールを無効化 */
+}
+
+/* 背景がグラデーションするアニメーション */
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(45deg, #404ee6,#4fa1ad,#c2ddfb,#ff9fb9);
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
+}
+
+/* グラデーションアニメーション */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 四角形の背景 */
+body::before {
+  content: "";
+  position: absolute;
+  top: 5vh;
+  left: 4vw;
+  width: 92vw;
+  height: 90vh;
+  background-color: rgba(255, 255, 255, 0.5); /* 半透明の白 */
+  z-index: 1; /* グラデーションの上、コンテンツの下 */
+  border-radius: 10px; /* 角を丸める（オプション） */
+  box-shadow: 0 0.27vw 1.03vw rgba(30, 30, 30, 0.2); /* 軽い影を追加 */
+  opacity: 0; /* 初期状態で非表示 */
+  visibility: hidden; /* 非表示設定 */
+  animation: fade-in 1s ease forwards;
+  animation-delay: 0.7s; /* ローダーの終了タイミングに合わせる */
+}
+
+/* 四角形のフェードインアニメーション */
+@keyframes fade-in {
+  0% { opacity: 0; visibility: hidden; }
+  100% { opacity: 1; visibility: visible; }
+}
+
+/* 枠線を追加 */
+body::after {
+  content: "";
+  position: absolute;
+  top: 50%; /* 画面中央 */
+  left: 50%; /* 画面中央 */
+  width: 95vw; /* 背景の四角形より少し小さく */
+  height: 95vh;
+  border: 0.14vw solid rgb(255, 255, 255); /* 枠線の色と太さ */
+  border-radius: 10px; /* 角を丸める（背景と一致させる） */
+  z-index: 2; /* 白い四角形の上 */
+  opacity: 0; /* 初期状態で非表示 */
+  visibility: hidden; /* 非表示設定 */
+  transform: translate(-50%, -50%); /* 中央に移動 */
+  animation: fade-in 1s ease forwards;
+  animation-delay: 1.2s; /* 背景と同期 */
+}
+
+/* Reset */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  overflow-x: hidden;
+}
+
+.menu-container {
+  position: relative;
+  z-index: 15;
+}
+
+/* チェックボックスを完全に非表示にする */
+.menu-toggle {
+  display: none;
+}
+
+/* ラベルとして機能するボタン */
+.menu-button-wrapper {
+  position: fixed;
+  top: 1.03vh; /* 15pxをvhに変換 */
+  left: 0.89vw; /* 13pxをvwに変換 */
+  width: 4.44vw; /* 65pxをvwに変換 */
+  height: 8.15vh; /* 65pxをvhに変換 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  cursor: pointer;
+  animation: keyvisual-fade-in 1.5s ease forwards; /* フェードインアニメーション */
+}
+
+@keyframes keyvisual-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(2.51vh); /* 20pxをvhに変換 */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ハンバーガーメニューの背景 */
+.menu-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 0.55vw;
+  box-shadow: 0 0.21vw 0.27vw rgba(0, 0, 0, 0.2);
+  z-index: -1;
+}
+
+/* ハンバーガーメニューアイコン */
+.menu-button {
+  position: relative;
+  width: 2.74vw; /* 40pxをvwに変換 */
+  height: 4.03vh; /* 30pxをvhに変換 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.line {
+  display: block;
+  width: 100%;
+  height: 0.27vh; /* 4pxをvhに変換 */
+  background-color: #222;
+  border-radius: 0.14vw;
+  position: absolute;
+  transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1), opacity 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* 1本目の線（上） */
+.line:nth-child(1) {
+  top: 0;
+  transform-origin: center;
+}
+
+/* 2本目の線（中央） */
+.line:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+  transform-origin: center;
+}
+
+/* 3本目の線（下） */
+.line:nth-child(3) {
+  bottom: 0;
+  transform-origin: center;
+}
+
+/* チェックされた場合の線の変化 */
+.menu-toggle:checked + .menu-button-wrapper .menu-button .line:nth-child(1) {
+  transform: translateY(1.61vh) rotate(45deg); /* 12pxをvhに変換 */
+}
+
+.menu-toggle:checked + .menu-button-wrapper .menu-button .line:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle:checked + .menu-button-wrapper .menu-button .line:nth-child(3) {
+  transform: translateY(-1.61vh) rotate(-45deg); /* -12pxをvhに変換 */
+}
+
+/* ナビゲーションメニュー */
+.menu {
+  font-family: "Lexend Peta", serif;
+  font-size: 5.47vh; /* 80pxをvhに変換 */
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 20.49vw; /* 300pxをvwに変換 */
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: left 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+  box-shadow: 0.14vw 0 0.34vw rgba(0, 0, 0, 0.2);
+  z-index: 999;
+}
+
+/* メニュー表示 */
+.menu-toggle:checked ~ .menu {
+  left: 0;
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  margin: 1.37vh 0; /* 20pxをvhに変換 */
+}
+
+.menu a {
+  color: #222;
+  text-decoration: none;
+  font-size: 1.23vw; /* 18pxをvwに変換 */
+  transition: color 0.3s ease;
+}
+
+.menu a:hover {
+  color: #ad0000d5;
+}
+
+.keyvisual{
+  width: 45vw;
+  height:auto;
+  z-index: 10;
+  position: absolute; /* 絶対位置で調整 */
+  top: 5vh; /* 白い四角の上からの距離を指定 */
+  left:27vw;
+  opacity: 0; /* 初期状態は透明 */
+  transform: translateY(1.37vh); /* 少し下から登場させる */
+  animation: keyvisual-fade-in 1.5s ease forwards; /* フェードインアニメーション */
+  animation-delay: 2s; /* テキストアニメーション後に表示 */
+}
+
+/* 立ち絵フェードインアニメーション */
+@keyframes keyvisual-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(2vh); /* 下から少し移動 */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* 元の位置に */
+  }
+}
+
+body {
+  font-family: "Shippori Mincho B1", serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.speech-bubbles-container {
+  position: relative; /* 吹き出しコンテナの基準 */
+  width: 100vw;
+  height: 100vh;
+}
+
+.speech-bubble-item {
+  position: absolute; /* 吹き出しの個別配置 */
+}
+
+.popup-toggle {
+  display: none;
+}
+
+.speech-bubble {
+  position: relative;
+  width: 18vw;
+  height: 8vh;
+  padding: 1.37vw;
+  background-color: #fff;
+  border: 0vw solid #070043;
+  border-radius: 1.37vw;
+  box-shadow: 0.14vw 0.14vw 0.68vw rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  transform-origin: center;
+  z-index: 16;
+  animation: keyvisual-fade-in 1s ease forwards;
+  opacity: 0;
+  animation-delay: 1.2s; /* ローダーの終了タイミングに合わせる */
+}
+
+.speech-bubble::before {
+  content: '';
+  position: absolute;
+  bottom: -1.37vw;
+  left: 2.73vw;
+  width: 0;
+  height: 0;
+  border: 0.68vw solid transparent;
+  border-top-color: #fff;
+  border-bottom: 0;
+  margin-left: -0.68vw;
+  filter: drop-shadow(0 0.07vw 0.2vw rgba(0, 0, 0, 0.1));
+}
+
+.speech-bubble .default-text {
+  font-family: "Kaisei Opti", serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.64vw;
+  color: #222;
+  transition: opacity 0.3s ease;
+}
+
+.speech-bubble:hover {
+  background-color: #ffe4e1;
+  transform: scale(1.1);
+}
+
+.speech-bubble:hover .default-text{
+  color:#ad0000
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  background-color: #fff;
+  border: 0vw solid #070043;
+  border-radius: 1.37vw;
+  padding: 2.05vw;
+  display: none;
+  box-shadow: 0 0.68vw 1.37vw rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  text-align: center;
+  animation: popup-appear 0.5s ease forwards;
+}
+
+.popup p {
+  margin: 0 0 1.37vw;
+  font-size: 1.37vw;
+}
+
+.popup .close-button {
+  display: inline-block;
+  padding: 0.68vw 1.37vw;
+  font-size: 1.09vw;
+  background-color: #ad0000;
+  color: #fff;
+  border: none;
+  border-radius: 0.68vw;
+  cursor: pointer;
+  text-align: center;
+}
+
+.popup .close-button:hover {
+  background-color: #ff5c5c;
+}
+
+.popup-toggle:checked ~ .popup {
+  display: block;
+}
+
+@keyframes popup-appear {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.popup{
+  font-family: "Kaisei Opti", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.headline{
+  font-family: "Dela Gothic One", serif;
+  font-size:3.5rem;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* 見出し文字 */
+.title-big{
+  position:absolute;
+  width:100%;
+  top:8vh;
+  left:7.7vw;
+  font-family: "Dela Gothic One", serif;
+  font-size:11.5vh;
+  font-weight: 400;
+  font-style: normal;
+  opacity: 0; /* 初期状態は透明 */
+  transform: translateY(1.37vh); /* 少し下から登場させる */
+  animation: keyvisual-fade-in 1.5s ease forwards; /* フェードインアニメーション */
+  animation-delay: 0.5s; /* テキストアニメーション後に表示 */
+}

@@ -1,0 +1,519 @@
+body {
+  overflow: hidden; /* 要素内のスクロールを無効化 */
+}
+
+/* 背景がグラデーションするアニメーション */
+body {
+  position:relative;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(45deg, #404ee6, #4fa1ad, #c2ddfb, #ff9fb9);
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
+}
+
+/* グラデーションアニメーション */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 四角形の背景 */
+body::before {
+  content: "";
+  position: absolute;
+  top: 5vh;
+  left: 4vw;
+  width: 92vw;
+  height: 90vh;
+  background-color: rgba(255, 255, 255, 0.5); /* 半透明の白 */
+  z-index: 1; /* グラデーションの上、コンテンツの下 */
+  border-radius: 1vh; /* 角を丸める（オプション） */
+  box-shadow: 0 0.4vh 1.5vh rgba(30, 30, 30, 0.2); /* 軽い影を追加 */
+  opacity: 0; /* 初期状態で非表示 */
+  visibility: hidden; /* 非表示設定 */
+  animation: fade-in 1s ease forwards;
+  animation-delay: 0.5s; /* ローダーの終了タイミングに合わせる */
+}
+
+/* 四角形のフェードインアニメーション */
+@keyframes fade-in {
+  0% { opacity: 0; visibility: hidden; }
+  100% { opacity: 1; visibility: visible; }
+}
+
+/* 枠線を追加 */
+body::after {
+  content: "";
+  position: absolute;
+  top: 50%; /* 画面中央 */
+  left: 50%; /* 画面中央 */
+  width: 95vw; /* 背景の四角形より少し小さく */
+  height: 95vh;
+  border: 0.2vh solid rgb(255, 255, 255); /* 枠線の色と太さ */
+  border-radius: 1vh; /* 角を丸める（背景と一致させる） */
+  z-index: 2; /* 白い四角形の上 */
+  opacity: 0; /* 初期状態で非表示 */
+  visibility: hidden; /* 非表示設定 */
+  transform: translate(-50%, -50%); /* 中央に移動 */
+  animation: fade-in 1s ease forwards;
+  animation-delay: 1s; /* 背景と同期 */
+}
+
+/* パーティクルのコンテナ */
+.particle-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1; /* 背景に配置 */
+}
+
+/* 各パーティクル */
+.particle {
+  position: absolute;
+  z-index: 1;
+  width: 3vw; /* パーティクルの幅 */
+  height: 3vw; /* パーティクルの高さ */
+  background: rgba(255, 255, 255, 0.8); /* パーティクルの色 */
+  border-radius: 50%; /* 丸い形状 */
+  animation: move 10s linear infinite;
+  opacity: 0;
+}
+
+/* パーティクルのランダムな初期位置 */
+.particle:nth-child(1) { top: 80vh; left: 10vw; animation-delay: 0s; }
+.particle:nth-child(2) { top: 50vh; left: 20vw; animation-delay: 2s; }
+.particle:nth-child(3) { top: 80vh; left: 30vw; animation-delay: 4s; }
+.particle:nth-child(4) { top: 70vh; left: 40vw; animation-delay: 6s; }
+.particle:nth-child(5) { top: 90vh; left: 50vw; animation-delay: 8s; }
+.particle:nth-child(6) { top: 60vh; left: 60vw; animation-delay: 10s; }
+.particle:nth-child(7) { top: 90vh; left: 70vw; animation-delay: 12s; }
+.particle:nth-child(8) { top: 50vh; left: 80vw; animation-delay: 14s; }
+
+/* パーティクルの動き */
+@keyframes move {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) scale(0.5); /* 上方向に移動しながら小さくなる */
+    opacity: 0;
+  }
+}
+
+/* Reset */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  overflow-x: hidden;
+}
+
+.menu-container {
+  position: relative;
+  z-index: 15;
+}
+
+/* チェックボックスを完全に非表示にする */
+.menu-toggle {
+  display: none;
+}
+
+/* ラベルとして機能するボタン */
+.menu-button-wrapper {
+  position: fixed;
+  top: 1.03vh; /* 15pxをvhに変換 */
+  left: 0.89vw; /* 13pxをvwに変換 */
+  width: 4.44vw; /* 65pxをvwに変換 */
+  height: 8.15vh; /* 65pxをvhに変換 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  cursor: pointer;
+  animation: keyvisual-fade-in 1.5s ease forwards; /* フェードインアニメーション */
+}
+
+@keyframes keyvisual-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(2.51vh); /* 20pxをvhに変換 */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ハンバーガーメニューの背景 */
+.menu-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 0.55vw;
+  box-shadow: 0 0.21vw 0.27vw rgba(0, 0, 0, 0.2);
+  z-index: -1;
+}
+
+/* ハンバーガーメニューアイコン */
+.menu-button {
+  position: relative;
+  width: 2.74vw; /* 40pxをvwに変換 */
+  height: 4.03vh; /* 30pxをvhに変換 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.line {
+  display: block;
+  width: 100%;
+  height: 0.27vh; /* 4pxをvhに変換 */
+  background-color: #222;
+  border-radius: 0.14vw;
+  position: absolute;
+  transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1), opacity 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* 1本目の線（上） */
+.line:nth-child(1) {
+  top: 0;
+  transform-origin: center;
+}
+
+/* 2本目の線（中央） */
+.line:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+  transform-origin: center;
+}
+
+/* 3本目の線（下） */
+.line:nth-child(3) {
+  bottom: 0;
+  transform-origin: center;
+}
+
+/* チェックされた場合の線の変化 */
+.menu-toggle:checked + .menu-button-wrapper .menu-button .line:nth-child(1) {
+  transform: translateY(1.61vh) rotate(45deg); /* 12pxをvhに変換 */
+}
+
+.menu-toggle:checked + .menu-button-wrapper .menu-button .line:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle:checked + .menu-button-wrapper .menu-button .line:nth-child(3) {
+  transform: translateY(-1.61vh) rotate(-45deg); /* -12pxをvhに変換 */
+}
+
+/* ナビゲーションメニュー */
+.menu {
+  font-family: "Lexend Peta", serif;
+  font-size: 5.47vh; /* 80pxをvhに変換 */
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 20.49vw; /* 300pxをvwに変換 */
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: left 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+  box-shadow: 0.14vw 0 0.34vw rgba(0, 0, 0, 0.2);
+  z-index: 999;
+}
+
+/* メニュー表示 */
+.menu-toggle:checked ~ .menu {
+  left: 0;
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  margin: 1.37vh 0; /* 20pxをvhに変換 */
+}
+
+.menu a {
+  color: #222;
+  text-decoration: none;
+  font-size: 1.23vw; /* 18pxをvwに変換 */
+  transition: color 0.3s ease;
+}
+
+.menu a:hover {
+  color: #ad0000d5;
+}
+
+/* 全体の親要素の左寄せ設定 */
+div[list-sessions] {
+  position: fixed; /* 絶対位置 */
+  top: 9.2vh; /* 必要に応じて上部からの位置を調整 */
+  left: 6.85vw; /* 画面の左端に配置 */
+  width: auto; /* 必要に応じて幅を調整 */
+  margin: 0; /* 余白をなくす */
+  text-align: left; /* 子要素の文字を左揃え */
+  z-index: 14; /* 他の要素より前に配置する */
+  animation: keyvisual-fade-in 2.4s ease forwards; /* フェードインアニメーション */
+}
+
+/* 行間を狭く設定 */
+div[class$="-comment"] p {
+  z-index: 14;
+  font-family: "Kiwi Maru", serif;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 1.9vh;
+  line-height: 0.5; /* 行間を調整 */
+}
+
+.puru-yoru {
+  z-index: 14;
+  font-family: "Kaisei Opti", serif;
+  font-weight: 800;
+  font-style: normal;
+  font-size: 2.8vh;
+  color:#7b0000;
+  padding: 0.1vw; /* 内側の余白を調整 */
+  background-color: #ffffff00; /* 背景色 */
+  border: 0.14vh solid #ffffff; /* 枠線の色と太さ */
+  border-radius: 8px; /* 楕円＋角張りの調整 */
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); /* 影を追加して立体感 */
+}
+
+.hand-cuffed {
+  z-index: 14;
+  font-family: "Kaisei Opti", serif;
+  font-weight: 800;
+  font-style: normal;
+  font-size: 2.8vh;
+  color:#7b0000;
+  padding: 0.1vw; /* 内側の余白を調整 */
+  background-color: #f9f9f900; /* 背景色 */
+  border: 0.14vh solid #ffffff; /* 枠線の色と太さ */
+  border-radius: 8px; /* 楕円＋角張りの調整 */
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); /* 影を追加して立体感 */
+}
+.razu-raba {
+  z-index: 14;
+  font-family: "Kaisei Opti", serif;
+  font-weight: 800;
+  font-style: normal;
+  font-size: 2.8vh;
+  color:#7b0000;
+  padding: 0.2vw; /* 内側の余白を調整 */
+  background-color: #f9f9f900; /* 背景色 */
+  border: 0.14vh solid #ffffff; /* 枠線の色と太さ */
+  border-radius: 8px; /* 楕円＋角張りの調整 */
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); /* 影を追加して立体感 */
+}
+.moku-sei {
+  z-index: 14;
+  font-family: "Kaisei Opti", serif;
+  font-weight: 800;
+  font-style: normal;
+  font-size: 2.8vh;
+  color:#7b0000;
+  padding: 0.2vw; /* 内側の余白を調整 */
+  background-color: #f9f9f900; /* 背景色 */
+  border: 0.14vh solid #ffffff; /* 枠線の色と太さ */
+  border-radius: 8px; /* 楕円＋角張りの調整 */
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); /* 影を追加して立体感 */
+}
+.hai-kudari {
+  z-index: 14;
+  font-family: "Kaisei Opti", serif;
+  font-weight: 800;
+  font-style: normal;
+  font-size: 2.8vh;
+  color:#7b0000;
+  padding: 0.2vw; /* 内側の余白を調整 */
+  background-color: #f9f9f900; /* 背景色 */
+  border: 0.14vh solid #ffffff; /* 枠線の色と太さ */
+  border-radius: 8px; /* 楕円＋角張りの調整 */
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); /* 影を追加して立体感 */
+}
+.kaku-duke {
+  z-index: 14;
+  font-family: "Kaisei Opti", serif;
+  font-weight: 800;
+  font-style: normal;
+  font-size: 2.8vh;
+  color:#7b0000;
+  padding: 0.2vw; /* 内側の余白を調整 */
+  background-color: #f9f9f900; /* 背景色 */
+  border: 0.14vh solid #ffffff; /* 枠線の色と太さ */
+  border-radius: 8px; /* 楕円＋角張りの調整 */
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); /* 影を追加して立体感 */
+}
+.desu-shi {
+  z-index: 14;
+  font-family: "Kaisei Opti", serif;
+  font-weight: 800;
+  font-style: normal;
+  font-size: 2.8vh;
+  color:#7b0000;
+  padding: 0.2vw; /* 内側の余白を調整 */
+  background-color: #f9f9f900; /* 背景色 */
+  border: 0.14vh solid #ffffff; /* 枠線の色と太さ */
+  border-radius: 8px; /* 楕円＋角張りの調整 */
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); /* 影を追加して立体感 */
+}
+
+.sessions-list {
+  position: fixed;
+  top: 5vh; /* 必要に応じて上部からの位置を調整 */
+  left: 6.85vw; /* 画面の左端に配置 */
+  font-family: "Dela Gothic One", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 4.4vh;
+  animation: keyvisual-fade-in 1.5s ease forwards; /* フェードインアニメーション */
+}
+
+.archives-list {
+  position: fixed;
+  top: 8.8vh; /* 必要に応じて上部からの位置を調整 */
+  left: 57.5vw; /* 画面の左端に配置 */
+  font-family: "Dela Gothic One", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3.8vh;
+  animation: keyvisual-fade-in 1.8s ease forwards; /* フェードインアニメーション */
+}
+
+.song-list {
+  position: fixed;
+  top: 47.6vh; /* 必要に応じて上部からの位置を調整 */
+  left: 57.5vw; /* 画面の左端に配置 */
+  font-family: "Dela Gothic One", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3.8vh;
+  animation: keyvisual-fade-in 2s ease forwards; /* フェードインアニメーション */
+}
+
+/* 通常状態のリンク */
+.session-link a {
+  text-decoration: none; /* 下線を消す */
+  font-size: 2.8vh;
+  color: #0023a0; /* 初期の文字色 */
+  transition: color 0.3s ease, font-weight 0.3s ease; /* スムーズな変化 */
+}
+
+/* ホバー時のリンク */
+.session-link a:hover {
+  color: #648fbd; /* ホバー時の文字色 */
+}
+
+/* フォーカスやクリック時のリンク */
+.session-link a:active {
+  color: #FF0000; /* クリック時の文字色 */
+}
+
+.other-list {
+  position: fixed; /* 絶対位置 */
+  top: 15vh; /* 必要に応じて上部からの位置を調整 */
+  left: 57.5vw; /* 画面の左端に配置 */
+  z-index: 14; /* 他の要素より前に配置する */
+  animation: keyvisual-fade-in 2.4s ease forwards; /* フェードインアニメーション */
+}
+
+/* 通常状態のリンク */
+.other-link a {
+  text-decoration: none; /* 下線を消す */
+  font-family: "Kaisei Opti", serif;
+  font-weight: 800;
+  font-style: normal;
+  font-size: 2.3vh;
+  color: #ca0051; /* 初期の文字色 */
+  transition: color 0.3s ease, font-weight 0.3s ease; /* スムーズな変化 */
+}
+
+/* ホバー時のリンク */
+.other-link a:hover {
+  color: #648fbd; /* ホバー時の文字色 */
+}
+
+/* フォーカスやクリック時のリンク */
+.other-link a:active {
+  color: #FF0000; /* クリック時の文字色 */
+}
+
+.songs {
+  position: fixed; /* 絶対位置 */
+  top: 52vh; /* 必要に応じて上部からの位置を調整 */
+  left: 57.5vw; /* 画面の左端に配置 */
+  z-index: 14; /* 他の要素より前に配置する */
+  animation: keyvisual-fade-in 2.4s ease forwards; /* フェードインアニメーション */
+}
+
+/* 通常状態のリンク */
+.song-link a {
+  text-decoration: none; /* 下線を消す */
+  font-family: "Kaisei Opti", serif;
+  font-weight: 800;
+  font-style: normal;
+  font-size: 2.3vh;
+  color: #ca0051; /* 初期の文字色 */
+  transition: color 0.3s ease, font-weight 0.3s ease; /* スムーズな変化 */
+  text-shadow: 3px 3px 5px rgba(255, 255, 255, 0.7); /* 白いシャドウ */
+}
+
+/* ホバー時のリンク */
+.song-link a:hover {
+  color: #648fbd; /* ホバー時の文字色 */
+  text-shadow: 3px 3px 5px rgba(255, 255, 255, 0.7); /* 白いシャドウ */
+}
+
+/* フォーカスやクリック時のリンク */
+.song-link a:active {
+  color: #FF0000; /* クリック時の文字色 */
+  text-shadow: 3px 3px 5px rgba(255, 255, 255, 0.7); /* 白いシャドウ */
+}
+
+.kids-image{
+  width:30%;
+  height:auto;
+  z-index:8;
+  position:fixed;
+  right:12vw;
+  bottom:5vh;
+  opacity:0.6;
+  animation: syota-fade-in 2.4s ease forwards; /* フェードインアニメーション */
+}
+
+@keyframes syota-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(2.51vh); /* 20pxをvhに変換 */
+  }
+  100% {
+    opacity: 0.6;
+    transform: translateY(0);
+  }
+}
