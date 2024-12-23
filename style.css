@@ -273,7 +273,6 @@ body::after {
 .introduction {
   z-index: 10;
   font-size:2.4vh;
-  font-weight:500;
   position: absolute; /* 絶対位置で調整 */
   top: 37vh; /* 白い四角の上からの距離を指定 */
   left: 12vw; /* 白い四角の左からの距離を指定 */
