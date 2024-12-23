@@ -1,26 +1,27 @@
-@media screen and (mix-width: 1400px) {
-  body{
-    display: block;
-  }
-  .message{
-    display:none;
-  }
+/* 警告メッセージを非表示にする初期設定 */
+#warning {
+  display: none;
+  font-size: 18px;
+  color: red;
+  text-align: center;
+  padding: 20px;
+  background-color: #f8d7da;
+  border: 1px solid #f5c2c7;
+  margin: 20px;
 }
 
-
-@media screen and (max-width: 1399px) {
-  body {
-    display: none;
-  }
-  .message {
-  z-index:8;
+/* 通常のコンテンツを表示する初期設定 */
+#content {
   display: block;
-  text-align: center;
-  font-size: 5.2vw;
-  background-color: #486680;
-  color: white;
-  padding: 20px;
-  border: 1px solid #1b2aac;
+}
+
+/* 1400px未満の画面で警告メッセージを表示 */
+@media (max-width: 1399px) {
+  #warning {
+    display: block;
+  }
+  #content {
+    display: none;
   }
 }
 
