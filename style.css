@@ -1,20 +1,3 @@
-/* 警告メッセージは最初は表示 */
-.warning-message {
-  z-index:8;
-  display: block;
-  text-align: center;
-  font-size: 5.2vw;
-  background-color: #486680;
-  color: white;
-  padding: 20px;
-  border: 1px solid #1b2aac;
-}
-
-/* サイトコンテンツは最初は表示されない */
-.site-content {
-  display: none;
-}
-
 /* 画面サイズが1400×750以上の場合、サイトコンテンツを表示 */
 @media (min-width: 1400px) and (min-height: 750px) {
   .warning-message {
@@ -30,6 +13,14 @@
 @media (max-width: 1399px), (max-height: 749px) {
   .warning-message {
     display: block;
+  z-index:8;
+  display: block;
+  text-align: center;
+  font-size: 5.2vw;
+  background-color: #486680;
+  color: white;
+  padding: 20px;
+  border: 1px solid #1b2aac;
   }
 
   .site-content {
