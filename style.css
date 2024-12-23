@@ -27,17 +27,7 @@
 }
 
 /* 画面サイズが1400×750未満の場合、警告メッセージを表示 */
-@media (max-width: 1399px) {
-  .warning-message {
-    display: block;
-  }
-
-  .site-content {
-    display: none;
-  }
-}
-
-@media (max-height: 749px) {
+@media (max-width: 1399px), (max-height: 749px) {
   .warning-message {
     display: block;
   }
