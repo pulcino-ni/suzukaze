@@ -288,7 +288,7 @@ div[class$="-comment"] p {
   font-weight: 300;
   font-style: normal;
   font-size: 1.4vh;
-  line-height: 0.5; /* 行間を調整 */
+  line-height: 0.2; /* 行間を調整 */
 }
 
 .puru-yoru {
