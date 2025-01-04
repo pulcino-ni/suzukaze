@@ -386,7 +386,7 @@ div[class$="-comment"] p {
 
 .sessions-list {
   position: fixed;
-  top: 5vh; /* 必要に応じて上部からの位置を調整 */
+  top: 2vh; /* 必要に応じて上部からの位置を調整 */
   left: 6.85vw; /* 画面の左端に配置 */
   font-family: "Dela Gothic One", serif;
   font-weight: 400;
