@@ -402,3 +402,17 @@ body {
   animation: keyvisual-fade-in 1.5s ease forwards; /* フェードインアニメーション */
   animation-delay: 0.5s; /* テキストアニメーション後に表示 */
 }
+.title-big2{
+  position:absolute;
+  width:100%;
+  top:8vh;
+  right:7.7vw;
+  font-family: "Dela Gothic One", serif;
+  font-size:11.5vh;
+  font-weight: 400;
+  font-style: normal;
+  opacity: 0; /* 初期状態は透明 */
+  transform: translateY(1.37vh); /* 少し下から登場させる */
+  animation: keyvisual-fade-in 1.5s ease forwards; /* フェードインアニメーション */
+  animation-delay: 0.5s; /* テキストアニメーション後に表示 */
+}
