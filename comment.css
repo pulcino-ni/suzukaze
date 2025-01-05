@@ -407,10 +407,11 @@ body {
   animation-delay: 0.5s; /* テキストアニメーション後に表示 */
 }
 .title-big2{
+  transform: scaleX(-1); /* 水平方向に反転 */
   position:absolute;
   width:100%;
   top:8vh;
-  left: calc(100% - 7.7vw - 100%); /* 左右反転位置に調整 */
+  left:7.7vw;
   font-family: "Dela Gothic One", serif;
   font-size:11.5vh;
   font-weight: 400;
