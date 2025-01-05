@@ -1,3 +1,43 @@
+/* 警告メッセージは最初は表示 */
+.warning-message {
+  z-index:8;
+  display: block;
+  text-align: center;
+  font-size: 5.2vw;
+  background-color: #486680;
+  color: white;
+  padding: 20px;
+  border: 1px solid #1b2aac;
+}
+
+/* サイトコンテンツは最初は表示されない */
+.site-content {
+  display: none;
+}
+
+/* 画面サイズが1400×750以上の場合、サイトコンテンツを表示 */
+@media (min-width: 1400px) and (min-height: 750px) {
+  .warning-message {
+    display: none;
+  }
+
+  .site-content {
+    display: block;
+  }
+}
+
+/* 画面サイズが1400×750未満の場合、警告メッセージを表示 */
+@media (max-width: 1399px), (max-height: 749px) {
+  .warning-message {
+    display: block;
+  }
+
+  .site-content {
+    display: none;
+  }
+}
+
+
 body{
   overflow: hidden; /* 要素内のスクロールを無効化 */
 }
@@ -72,7 +112,7 @@ body::before {
   opacity: 0; /* 初期状態で非表示 */
   visibility: hidden; /* 非表示設定 */
   animation: fade-in 1s ease forwards;
-  animation-delay: 3.8s; /* ローダーの終了タイミングに合わせる */
+  animation-delay: 3s; /* ローダーの終了タイミングに合わせる */
 }
 
 /* 四角形のフェードインアニメーション */
@@ -96,7 +136,7 @@ body::after {
   visibility: hidden; /* 非表示設定 */
   transform: translate(-50%, -50%); /* 中央に移動 */
   animation: fade-in 1s ease forwards;
-  animation-delay: 3.8s; /* 背景と同期 */
+  animation-delay: 3s; /* 背景と同期 */
 }
 
 /* 決め台詞 */
