@@ -417,6 +417,7 @@ body {
   font-style: normal;
   opacity: 0; /* 初期状態は透明 */
   transform: translateY(1.37vh); /* 少し下から登場させる */
+    transform-origin: right center; /* 右端を基準に反転 */
   animation: keyvisual-fade-in 1.5s ease forwards; /* フェードインアニメーション */
   animation-delay: 0.5s; /* テキストアニメーション後に表示 */
 }
