@@ -42,42 +42,6 @@ body{
   overflow: hidden; /* 要素内のスクロールを無効化 */
 }
 
-/* HTML: <div class="loader"></div> */
-.loader {
-  width: 17.1vw;
-  height: 1.25vh;
-  border-radius: 20px;
-  color: #ffffff;
-  border: 0.14vw solid;
-  position: relative;
-  align-items: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform : translate(-50%,-50%);
-  transform : translate(-50%,-50%);
-  animation: loader-fade-out 3.8s forwards;
-}
-.loader::before {
-  content: "";
-  position: absolute;
-  margin: 0.14vw;
-  inset: 0 100% 0 0;
-  border-radius: inherit;
-  background: currentColor;
-  animation: l6 3s infinite;
-}
-
-/* ロードバーのアニメーション */
-@keyframes l6 {
-    100% {inset:0}
-}
-/* フェードアウトのアニメーション */
-@keyframes loader-fade-out {
-      50% { opacity: 1; }
-      100% { opacity: 0; }
-    }
-
 /* 背景がグラデーションするアニメーション */
 body {
   margin: 0;
@@ -112,7 +76,7 @@ body::before {
   opacity: 0; /* 初期状態で非表示 */
   visibility: hidden; /* 非表示設定 */
   animation: fade-in 1s ease forwards;
-  animation-delay: 3s; /* ローダーの終了タイミングに合わせる */
+  animation-delay: 1s; /* ローダーの終了タイミングに合わせる */
 }
 
 /* 四角形のフェードインアニメーション */
@@ -136,7 +100,7 @@ body::after {
   visibility: hidden; /* 非表示設定 */
   transform: translate(-50%, -50%); /* 中央に移動 */
   animation: fade-in 1s ease forwards;
-  animation-delay: 3s; /* 背景と同期 */
+  animation-delay: 1.2s; /* 背景と同期 */
 }
 
 /* 決め台詞 */
@@ -160,10 +124,10 @@ body::after {
   animation: slide-up-cute 1s ease-out forwards;
 }
 .catchphrase p:nth-child(1) {
-  animation-delay: 4.2s;
+  animation-delay: 1.4s;
 }
 .catchphrase p:nth-child(2) {
-  animation-delay: 4.5s;
+  animation-delay: 1.6s;
 }
 
 .catchphrase2 {
@@ -187,10 +151,10 @@ body::after {
   animation: slide-up-cute 1s ease-out forwards;
 }
 .catchphrase2 p:nth-child(1) {
-  animation-delay: 4.2s;
+  animation-delay: 1.6s;
 }
 .catchphrase2 p:nth-child(2) {
-  animation-delay: 4.5s;
+  animation-delay: 1.8s;
 }
 
 /* 下からかわいく登場するアニメーション */
@@ -219,7 +183,7 @@ body::after {
   opacity: 0; /* 初期状態は透明 */
   transform: translateY(1.37vh); /* 少し下から登場させる */
   animation: keyvisual-fade-in 1.5s ease forwards; /* フェードインアニメーション */
-  animation-delay: 4.5s; /* テキストアニメーション後に表示 */
+  animation-delay: 2s; /* テキストアニメーション後に表示 */
 }
 
 /* vh, vw を使用して調整した CSS */
@@ -258,7 +222,7 @@ body::after {
   opacity: 0; /* 初期状態は透明 */
   transform: translateY(2vh); /* 少し下から登場させる */
   animation: keyvisual-fade-in 1.5s ease forwards; /* フェードインアニメーション */
-  animation-delay: 4.7s; /* テキストアニメーション後に表示 */
+  animation-delay: 2.4s; /* テキストアニメーション後に表示 */
 }
 
 /* パーティクルのコンテナ */
@@ -319,7 +283,7 @@ body::after {
   opacity: 0; /* 初期状態は透明 */
   transform: translateY(4vh); /* 少し下から登場させる */
   animation: keyvisual-fade-in 1.5s ease forwards; /* フェードインアニメーション */
-  animation-delay: 4.5s; /* テキストアニメーション後に表示 */
+  animation-delay: 2s; /* テキストアニメーション後に表示 */
 }
 
 /* PL紹介ラベル */
@@ -334,7 +298,7 @@ body::after {
   right: 0vw; /* 初期状態で画面の右外に配置 */
   opacity: 0; /* 初期状態は透明 */
   animation: slide-in-fade 2s ease forwards;
-  animation-delay: 4.5s; /* テキストアニメーション後に表示 */
+  animation-delay: 2s; /* テキストアニメーション後に表示 */
 }
 
 @keyframes slide-in-fade {
@@ -359,7 +323,7 @@ body::after {
   right: 6.2vw; /* 初期状態で画面の右外に配置 */
   opacity: 0; /* 初期状態は透明 */
   animation: slide-in-fade 2s ease forwards;
-  animation-delay: 4.5s; /* テキストアニメーション後に表示 */
+  animation-delay: 2.4s; /* テキストアニメーション後に表示 */
 }
 
 /* ボタン */
@@ -373,7 +337,7 @@ body::after {
   bottom: 12%; /* 白い四角の上からの距離をvhに設定 */
   left: 5%; /* 白い四角の左からの距離をvwに設定 */
   animation: keyvisual-fade-in 1s ease forwards;
-  animation-delay: 4.5s; /* 背景と同期 */
+  animation-delay: 2.2s; /* 背景と同期 */
 }
 
 .profile {
@@ -460,7 +424,7 @@ body::after {
   color: white;
   background:
     linear-gradient(rgba(96, 140, 198, 0.5), rgba(96, 140, 198, 0.5)),
-    url('images/バレンタイン2024.png'); /* 画像のパス */
+    url('images/バレンタイン2024.png'); /* 画像のパス */
   background-size: cover;
   background-position: center;
   border: 0.14vw solid #ffffff;
@@ -507,7 +471,7 @@ body::after {
   font-style: normal;
   animation: keyvisual-fade-in 1s ease forwards;
   opacity: 0;
-  animation-delay: 4.5s;
+  animation-delay: 2s;
 }
 .ruby {
   position: absolute;
@@ -520,5 +484,5 @@ body::after {
   font-style: normal;
   animation: keyvisual-fade-in 1s ease forwards; /* フェードインアニメーション */
   opacity: 0;
-  animation-delay: 4.7s;
+  animation-delay: 2.2s;
 }
