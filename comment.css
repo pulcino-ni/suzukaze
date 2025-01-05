@@ -388,6 +388,10 @@ body {
 }
 
 /* 見出し文字 */
+.titles{
+  position:relative;
+}
+
 .title-big{
   position:absolute;
   width:100%;
