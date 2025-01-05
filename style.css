@@ -35,13 +35,6 @@
   .site-content {
     display: none;
   }
-
-  body::before{
-    display:none;
-  }
-  body::after{
-    display:none;
-  }
 }
 
 
