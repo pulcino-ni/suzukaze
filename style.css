@@ -35,6 +35,16 @@
   .site-content {
     display: none;
   }
+
+  body::before {
+  content: "";
+  opacity:0;
+ }
+
+  body::after {
+  content: "";
+  opacity:0;
+ }
 }
 
 
