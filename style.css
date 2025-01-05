@@ -1,6 +1,5 @@
 body{
   overflow: hidden; /* 要素内のスクロールを無効化 */
-  position: fixed; /* ページ全体を固定 */
 }
 
 /* HTML: <div class="loader"></div> */
