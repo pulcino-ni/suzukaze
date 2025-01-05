@@ -36,15 +36,12 @@
     display: none;
   }
 
-  body::before {
-  content: "";
-  opacity:0;
- }
-
-  body::after {
-  content: "";
-  opacity:0;
- }
+  body::before{
+    display:none;
+  }
+  body::after{
+    display:none;
+  }
 }
 
 
