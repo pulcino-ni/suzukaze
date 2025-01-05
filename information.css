@@ -273,7 +273,7 @@ body, html {
 .image-container {
   position: absolute;
   z-index: 12;
-  width: 20.49vw; /* 300pxをvwに変換 */
+  width: 18.49vw; /* 300pxをvwに変換 */
   height: auto;
   overflow: hidden;
   display: flex;
