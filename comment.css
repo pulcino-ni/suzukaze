@@ -403,7 +403,7 @@ body {
   animation-delay: 0.5s; /* テキストアニメーション後に表示 */
 }
 .title-big2{
-  position:absolute;
+  position:fixed;
   width:100%;
   top:8vh;
   right:7.7vw;
